@@ -1,0 +1,85 @@
+BoxLayout:
+    orientation: "vertical"
+    id: EquipmentConsole
+    BoxLayout:
+        orientation: 'horizontal'
+        BoxLayout:
+            orientation: 'vertical'
+            Button:
+                text: 'List Items'
+                id: list_items_button
+                font_size: 48
+                color: (1, 1, 1, 1)
+                on_press: app.list_items_button()
+            Button:
+                text: 'Hire Items'
+                id: hire_items_button
+                font_size: 48
+                color: (1, 1, 1, 1)
+                on_press: app.hire_items_button()
+            Button:
+                text: 'Return Items'
+                id: return_items_button
+                font_size: 48
+                color: (1, 1, 1, 1)
+                on_press: app.return_items_button()
+            Button:
+                text: 'Confirm'
+                id: confirm_button
+                font_size: 48
+                color: (1, 1, 1, 1)
+                on_press: app.confirm_button()
+            Button:
+                text: 'Add New Item'
+                id: add_new_item_button
+                font_size: 48
+                color: (1, 1, 1, 1)
+                on_press: popup.open()
+    Label:
+        color: (1, 1, 1, 1)
+        valign: 'middle'
+        text: app.footer_label
+
+    Popup:
+        id: popup
+        title: "Add Item"
+        on_parent:
+            if self.parent == EquipmentConsole: self.parent.remove_widget(self)
+        BoxLayout:
+            orientation: 'vertical'
+            Label:
+                id: item_name_label
+                text: 'Item Name'
+                color: (1, 1, 1, 1)
+                valign: 'middle'
+            TextInput:
+                id: new_name_input
+                value: ''
+            Label:
+                id: description_label
+                text: 'Description'
+                color: (1, 1, 1, 1)
+                valign: 'middle'
+            TextInput:
+                id: new_description_input
+                text: ''
+            Label:
+                id: price_per_day_label
+                text: 'Price Per Day'
+                color: (1, 1, 1, 1)
+                valign: 'middle'
+            TextInput:
+                id: new_price_per_day_input
+                text: ''
+            Button:
+                id: save_button
+                text: 'Save Item'
+                on_press: popup.dismiss()
+            Button:
+                id: cancel_button
+                text: 'Cancel'
+                on_press: popup.dismiss()
+            Label:
+                text: app.footer_label
+                color: (1, 1, 1, 1)
+                valign: 'middle'
